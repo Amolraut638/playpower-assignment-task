@@ -1,0 +1,136 @@
+/* ============================================
+   AIRBNB CLONE — GLOBAL STYLES
+   Phase 2: Theme & Global Styles
+   ============================================ */
+
+/* ---------- Fonts — Inter from Google Fonts (matches Airbnb Cereal visually) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Text */
+  --ink:          #222222;
+  --muted:        #6a6a6a;
+  --muted2:       #717171;
+
+  /* Borders & Lines */
+  --line:         #dddddd;
+  --line-soft:    #ebebeb;
+  --card-border:  rgba(0, 0, 0, 0.08);
+
+  /* Brand */
+  --rausch:       #ff385c;
+  --reserve:      linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  --reserve-hover:linear-gradient(to right, #d81b5f 0%, #c31a5b 50%, #bd0463 100%);
+
+  /* Greys */
+  --grey100:      #f7f7f7;
+  --grey200:      #f2f2f2;
+  --grey300:      #ebebeb;
+
+  /* Layout */
+  --container:    1280px;
+
+  /* Typography */
+  --font: 'Inter', Circular, -apple-system, BlinkMacSystemFont,
+          'system-ui', Roboto, 'Helvetica Neue', sans-serif;
+
+  /* Shadows */
+  --shadow-card:  0 6px 16px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Box Model Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Base HTML ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.43;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scroll lock — applied via JS when a modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ---------- Element Resets ---------- */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 12px;
+  left: 12px;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

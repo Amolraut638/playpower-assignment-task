@@ -1,0 +1,584 @@
+AI WORKFLOW PROMPTS LOG
+Airbnb Listing Clone — Take-Home Assignment
+=============================================
+
+This document records all prompts used across multiple AI tools (Antigravity IDE, ChatGPT, Claude) 
+to build the Airbnb listing clone project. Prompts are listed in chronological order.
+
+TOOLS USED:
+- Antigravity IDE (primary coding agent — generated all React/CSS code)
+- ChatGPT (used to craft precise, structured prompts for Antigravity so it works more effectively)
+- Claude (used for cross-checking logic and reviewing specific component approaches)
+
+NOTE ON THIS LOG:
+- The prompts are preserved in chronological order and retain their original intent.
+- Documentation-only cleanup was applied to correct phase numbering and clarify context annotations.
+- No new development prompts or fabricated AI activity were added.
+- Where a prompt refers to screenshots, pasted CSS, or other material, the surrounding entry identifies that context explicitly.
+
+=============================================
+SECTION 1: INITIAL SETUP & RULES (via ChatGPT → Antigravity)
+=============================================
+
+PROMPT 1 — System Rules & Behavior Override:
+---------------------------------------------
+This prompt overrides your default behavior for this entire conversation.
+
+Follow these rules STRICTLY until I explicitly tell you otherwise.
+
+1. DO NOT work ahead.
+2. DO NOT make assumptions.
+3. DO NOT implement extra features.
+4. DO NOT redesign anything.
+5. DO NOT optimize unless I ask.
+6. DO NOT choose architecture on your own.
+7. DO NOT generate code beyond what I explicitly request.
+8. NEVER continue to the next step automatically.
+9. After completing any task, STOP and wait for my next prompt.
+10. Every response must only contain exactly what I requested.
+11. If there are multiple possible implementations, ask me which one to use instead of deciding yourself.
+12. The reference website is the SINGLE source of truth. If anything differs from common Airbnb implementations, always follow the reference.
+13. Pixel-perfect accuracy is more important than speed.
+14. Reuse components only when they produce identical visual output.
+15. Do not simplify animations, spacing, typography, interactions, accessibility, or layout.
+16. Whenever I say "match the reference", inspect every visible detail before implementing.
+17. Never replace requested functionality with placeholders unless I explicitly ask.
+18. Before writing code, briefly explain the plan in 3-5 bullet points. After I approve or if I explicitly requested implementation, generate only the requested code.
+19. If I upload screenshots or documentation, treat them as mandatory requirements.
+20. Never ignore any instruction from my prompts in favor of your own reasoning.
+
+For the rest of this conversation you are acting as my senior frontend engineer implementing exactly what I request, nothing more and nothing less.
+
+Reply only with:
+"I understand. I will only execute exactly what you request and will wait after every completed task."
+
+
+PROMPT 2 — Assignment Analysis (no code):
+------------------------------------------
+Read the assignment carefully.
+
+Do not write any code.
+
+Your job is to completely understand the assignment.
+
+Return only:
+
+1. Every functional requirement.
+2. Every UI requirement.
+3. Every animation requirement.
+4. Every accessibility requirement.
+5. Every interaction requirement.
+6. Every deliverable required for submission.
+7. Hidden requirements that interviewers are likely testing.
+8. Features that must be pixel-perfect.
+9. Features where behavior matters more than visuals.
+10. A checklist that can later be used before submission.
+
+Do not suggest implementation yet.
+
+
+PROMPT 3 — Reference Website Inspection:
+-----------------------------------------
+Open the reference website.
+
+https://airbnb-clone-umber-two.vercel.app
+
+Do NOT write code.
+
+Inspect the entire website like a QA engineer.
+
+Document everything including:
+
+- layout
+- spacing
+- typography
+- colors
+- border radius
+- shadows
+- paddings
+- margins
+- responsive breakpoints (desktop only)
+- icons
+- hover effects
+- transitions
+- loading behavior
+- sticky elements
+- scrolling behavior
+- image gallery
+- lightbox
+- photo tour
+- keyboard shortcuts
+- focus states
+- animations
+- modal behavior
+- accessibility
+
+Pretend you are writing a specification document for another developer.
+
+Nothing should be missed.
+
+
+PROMPT 4 — Screenshot-Based Specification (after manually sharing DevTools screenshots):
+------------------------------------------------------------------------------------------
+The attached screenshots are now the ONLY source of truth.
+
+Do NOT access the website.
+
+Treat every screenshot as an official design specification.
+
+Study every screenshot in extreme detail.
+
+Your task is NOT to generate code.
+
+Produce a complete UI specification.
+
+Include:
+
+# Layout
+- overall page width
+- max container width
+- margins
+- spacing system
+- grid
+- alignment
+
+# Typography
+Every font size. Every font weight. Line heights. Letter spacing. Text colors.
+
+# Colors
+Backgrounds. Borders. Cards. Buttons. Hover colors. Badges. Links. Icons.
+
+# Components
+List every component visible.
+Example: Navbar, HeroGallery, BookingCard, Amenities, Calendar, Reviews, Map, HostCard, Footer, PhotoTour, Lightbox
+
+# Component hierarchy
+Describe parent-child relationships.
+
+# Spacing
+Estimate every padding and margin.
+
+# Border radius
+Estimate all radii.
+
+# Shadows
+Estimate every shadow.
+
+# Buttons
+Document hover, active, focus, disabled.
+
+# Animations
+Identify every animation visible. Mention any animation that must be recreated.
+
+# Images
+Image ratios. Cropping. Object-fit. Rounded corners. Hover behavior.
+
+# Sticky elements
+Identify every sticky component.
+
+# Accessibility
+Keyboard navigation. Focus states. ARIA expectations. Escape behavior. Tab order.
+
+# Photo Tour
+Document layout, sections, thumbnails, scrolling, navigation, category headers.
+
+# Lightbox
+Document layout, close button, previous, next, keyboard arrows, image scaling, background, transition.
+
+# Responsive
+Desktop only. Ignore mobile.
+
+# Anything uncertain
+Do NOT guess. Mark it as: "Needs manual verification."
+
+The output should be detailed enough that another engineer could recreate the UI without seeing the screenshots.
+
+In the next prompt I will share the screenshots from the inspect tab.
+
+
+PROMPT 5 — Sharing CSS source code from browser DevTools:
+----------------------------------------------------------
+[Context: The user pasted CSS extracted from the reference site's browser DevTools. It was used to identify design tokens and styling patterns.]
+
+
+=============================================
+SECTION 2: PROJECT SCAFFOLD & GLOBAL STYLES
+=============================================
+
+PROMPT 6 — Project Initialization:
+-------------------------------------
+Now we start implementation.
+
+Phase 1: Project Setup.
+
+Initialize a new Vite + React project in the PlayPower Assignment folder.
+Use the exact font stack and CSS custom properties from the specification.
+Set up index.html with correct meta tags, title, and favicon.
+Set up App.jsx as the root shell.
+Do not build any components yet.
+Stop after this and wait.
+
+
+PROMPT 7 — Global CSS Design Tokens:
+--------------------------------------
+Phase 2: Global CSS Variables.
+
+In src/index.css, implement the complete design token system.
+Include: --ink, --muted, --muted2, --line, --line-soft, --card-border, --rausch, --reserve gradient, --grey100/200/300, --container, --font, --shadow-card, --shadow-hover.
+Also add the CSS reset: box-sizing border-box, body margin 0, html scroll-behavior smooth.
+Add font smoothing to body.
+Do not build any components. Stop and wait.
+
+
+PROMPT 8 — Header Component:
+------------------------------
+Phase 3: Build the sticky top header.
+
+Match the reference exactly.
+Three-column grid: logo left, search pill center, user nav right.
+Logo is the Airbnb SVG in rausch color.
+Search pill has "Anywhere", "Anytime", "Add guests" separated by vertical dividers and a pink search icon button on the right.
+User nav has globe icon, hamburger menu, and circular avatar.
+Header is sticky top-0, has border-bottom: 1px solid var(--line-soft), and a subtle box-shadow on scroll.
+Stop and wait after completing the Header and its CSS file.
+
+
+PROMPT 9 — Sticky Scroll Header:
+----------------------------------
+Phase 4: Sticky scroll header that appears when user scrolls past the hero gallery.
+
+It should contain the four navigation tabs: Photos, Amenities, Reviews, Location.
+And a "Reserve" button on the right in the pink gradient style.
+It should slide in smoothly using a CSS transform translateY animation.
+Use an IntersectionObserver or scroll event listener to detect when the hero gallery exits the viewport.
+Stop and wait.
+
+
+PROMPT 10 — Title Section:
+----------------------------
+Phase 5: Build the TitleSection component.
+
+It must show:
+- Property title as h1
+- Rating star + score
+- Review count as a clickable link
+- Location text as a link
+- Share button (upload icon + "Share" text)
+- Save/Heart button (heart icon + "Save" text)
+
+Match the layout from the reference screenshots exactly.
+Stop and wait.
+
+
+PROMPT 11 — Hero Photo Gallery:
+---------------------------------
+Phase 6: Build the HeroGallery component.
+
+Five-photo collage grid layout.
+Left side: one large full-height photo spanning two rows.
+Right side: 2x2 grid of four smaller photos.
+All photos have hover zoom effect using transform scale(1.04) with overflow hidden.
+Border radius on specific corners only (top-left main, top-right and bottom-right for grid corners).
+"Show all photos" button in the bottom-right corner with a grid dots icon.
+Photos will be local assets imported from src/assets/.
+Stop and wait.
+
+
+PROMPT 12 — Two-Column Content Layout + Property Header:
+----------------------------------------------------------
+Phase 7 and 8: Two-column layout and PropertyHeader.
+
+ContentLayout: CSS grid with left column (wider) and right column (narrower, sticky).
+PropertyHeader: Shows property type, guest/bed/bath counts, and the host avatar with name.
+Stop and wait.
+
+
+PROMPT 13 — Guest Favourite Badge:
+------------------------------------
+Phase 9: Guest Favourite badge section.
+
+Two SVG laurel branch decorations flanking the text.
+"Guest favourite" label, large bold rating score, "Out of 5" small text, horizontal divider.
+"1,463 reviews" count at the bottom.
+This must be built with inline SVGs matching the reference laurel shape exactly.
+Stop and wait.
+
+
+PROMPT 14 — Highlights List:
+------------------------------
+Phase 10: Highlights list.
+
+Three highlights with icons and text:
+1. Outdoor entertainment — "The pool and alfresco dining are great for summer trips."
+2. Designed for staying cool — "Beat the heat with the A/C and ceiling fan."
+3. Self check-in — "You can check in with the building staff."
+
+Icons should be small (20px).
+Stop and wait.
+
+
+PROMPT 15 — Description Area:
+-------------------------------
+Phase 11: Description block.
+
+Show first 3 lines of the listing description with a fade mask at the bottom.
+"Show more" button with a chevron right icon expands the full text.
+Stop and wait.
+
+
+PROMPT 16 — Sleeping Arrangements:
+------------------------------------
+Phase 12: Sleeping arrangements section.
+
+Horizontal scrollable card row.
+Each card: 320px wide, 4:3 aspect ratio image, card name, bed type below the image.
+Hover: image scales up slightly with a soft shadow lift.
+Text (card name, bed type) is outside the image, below it.
+Stop and wait.
+
+
+PROMPT 17 — Amenities Grid:
+-----------------------------
+Phase 13: Amenities grid.
+
+Show first 10 amenities in a 2-column grid.
+Each amenity has an icon (24px) and label text.
+Crossed-out amenities (not available) shown in muted gray with strikethrough icon.
+"Show all X amenities" button below the grid with a border and hover effect.
+Stop and wait.
+
+
+PROMPT 18 — Availability Calendar:
+-------------------------------------
+Phase 14: Availability calendar.
+
+Two months side by side.
+Day cells: 36x36px, hover state with dark circle background.
+Selected range highlighted with a light pink background.
+Navigation prev/next buttons.
+"Clear dates" button below.
+Stop and wait.
+
+
+PROMPT 19 — Booking Widget:
+-----------------------------
+Phase 15: Booking card widget (right column, sticky).
+
+Show price per night.
+Date range inputs (check-in / check-out).
+Guest count selector.
+Pink gradient "Reserve" button (full width).
+Price breakdown below: per night x nights, cleaning fee, service fee, total.
+Border, border-radius 16px, box-shadow.
+Stop and wait.
+
+
+PROMPT 20 — Reviews Section:
+------------------------------
+Phase 16 and 17: Reviews section.
+
+Top row: overall score with laurel branches and "Guest favourite" label.
+6-category rating bars (Cleanliness, Accuracy, Check-in, Communication, Location, Value).
+Filter chips row: selectable pill buttons for each reviewer name.
+Review cards: 2-column grid, avatar, name, date, star rating, review text, "Show more" toggle.
+"Show all 1,463 reviews" pill button at the bottom.
+Stop and wait.
+
+
+PROMPT 21 — Location Section:
+-------------------------------
+Phase 18: Location section.
+
+Heading: "Where you'll be"
+A map placeholder or embedded map showing the Candolim Goa area.
+Location description text below.
+Stop and wait.
+
+
+PROMPT 22 — Site Footer:
+--------------------------
+Phase 19: Build the SiteFooter component.
+
+4-column grid layout.
+Column headings: Support, Hosting, Airbnb, Neighborhoods.
+Each column has 5-6 text links.
+Bottom bar: copyright, Privacy/Terms/Sitemap links with dot separators, globe icon + "English (IN)" button, social icons (Facebook, Twitter, Instagram).
+Stop and wait.
+
+
+PROMPT 23 — Photo Tour Modal:
+-------------------------------
+Phase 20: Build the Photo Tour modal.
+
+Full-screen overlay opened by "Show all photos" button.
+Top bar: back arrow button (left), "Photo tour" title (center), Share + Save buttons (right).
+Thumbnail navigation: scrollable horizontal strip of room category thumbnails.
+Below: vertically stacked room sections. Each section has a sticky left panel (room name + amenities) and a right column with a large hero image and a 2-column subgrid for remaining photos.
+Clicking any photo should open the Lightbox at that exact photo index.
+Use React portal and createPortal for the overlay.
+Use useFocusTrap hook for keyboard accessibility.
+Body scroll locked when modal is open.
+Escape key closes the modal.
+Stop and wait.
+
+
+PROMPT 24 — Lightbox Modal:
+-----------------------------
+Phase 21: Build the Lightbox modal.
+
+Full-screen white-background overlay.
+Top bar: "X / Total" counter (left), Share + Save buttons and Close button (right).
+Center: single large image that fits within the viewport.
+Left and right chevron navigation buttons (disabled at first/last index).
+Thumbnail strip at the bottom showing all images, active one highlighted.
+Keyboard: ArrowLeft = previous, ArrowRight = next, Escape = close.
+Fade transition between image changes (150ms opacity toggle).
+Use React portal. Use useFocusTrap. Lock body scroll.
+Stop and wait.
+
+
+PROMPT 25 — useFocusTrap Hook:
+--------------------------------
+Phase 22: Build the useFocusTrap custom hook.
+
+File: src/hooks/useFocusTrap.js
+
+When active = true and containerRef is attached:
+- Collect all focusable elements inside the container.
+- Move focus to the first focusable element on open.
+- Trap Tab: wrap from last → first.
+- Trap Shift+Tab: wrap from first → last.
+Clean up the event listener on unmount.
+Stop and wait.
+
+
+=============================================
+SECTION 3: VISUAL REFINEMENTS (Mid-build iterations)
+=============================================
+
+PROMPT 26 — Photo Tour Sticky Left Titles:
+-------------------------------------------
+The photo tour looks like this in the original website. The left side titles are sticky until the specific contents of that section end. 
+
+Implement proper sticky behavior for the left panel (room title + amenities) inside each room section so it stays visible while scrolling through that section's photos, then unsticks naturally when the section ends.
+
+Stop and wait.
+
+
+PROMPT 27 — Images Placeholder Request:
+-----------------------------------------
+Wait wait, don't generate any images. Just add a dummy path or any image available online. Later I will replace that with the original image. Now you continue.
+
+
+PROMPT 28 — Lightbox Verification:
+-------------------------------------
+Have you implemented this feature? Like in the photo tour, when the user clicks on any image, that should open an image viewer with the above specification. And the first image opened should be the one selected by the user.
+
+
+PROMPT 29 — Photo Tour Visual Fix + Avatar + Icons:
+-----------------------------------------------------
+Photo tour section is now fully working. I have shared you the screenshot. In that I have used images from Gemini which are created by you but it looks very bad, asymmetric. So use SVG — create it the same as shown in the second image.
+
+Also change the host avatar, use a dummy image there, I will change that later.
+
+Outdoor entertainment — The pool and alfresco dining are great for summer trips.
+Designed for staying cool — Beat the heat with the A/C and ceiling fan.
+Self check-in — You can check in with the building staff.
+
+And the icons of the above points are looking bigger so reduce the size of it.
+
+Don't touch the booking card, it's very fine. We don't have to change it.
+
+
+PROMPT 30 — Sleeping Section Name Clarification:
+-------------------------------------------------
+What is this section called?
+[Context: The user was asking about the "Where you'll sleep" / Sleeping Arrangements section.]
+
+
+PROMPT 31 — Sleeping Arrangements CSS Improvement:
+---------------------------------------------------
+[Context: The user pasted the existing Sleeping Arrangements CSS for review.]
+Check this sleeping arrangement CSS. Make it more interactive and professional looking just like Airbnb.
+
+
+PROMPT 32 — Text Outside the Card:
+-------------------------------------
+Keep the text outside the box. It will look nice.
+[Referring to bedroom name and bed type text being outside the card image boundary]
+
+
+PROMPT 33 — Reviews Section Fix:
+----------------------------------
+Fix the reviews section. Improve it look-wise and match it to our other components. Review the current JSX and CSS file for it.
+
+
+PROMPT 34 — Meet Your Host Improvement:
+-----------------------------------------
+Now we have to improve this section which I have sent you in the image, which is "Meet your host". In that:
+- Use the avatar as an image which I have in my assets folder.
+- The "Message host" button is broken — fix that.
+- Also improve the overall module visually.
+
+
+=============================================
+SECTION 4: PROJECT REVIEW & SUBMISSION PREP
+=============================================
+
+PROMPT 35 — Full Project Review:
+----------------------------------
+Okay so now go through all the code and review the whole project because the project is completed now.
+
+
+PROMPT 36 — Assignment Checklist:
+-----------------------------------
+Check the assignment again and check what's remaining and what's done.
+
+
+PROMPT 37 — Clarification Question:
+--------------------------------------
+What is the purpose of .gitkeep?
+
+
+PROMPT 38 — Submission Requirements:
+---------------------------------------
+What We Will Look At:
+- Modern AI workflow usage (coding agents, sub-agents, skills, prompts)
+- How closely the clone matches the reference, visual fidelity and behavioural parity, including animations, transitions, and accessibility
+- Production architecture thinking
+- AI subagent configs for code quality and project structure
+
+Please keep the scope focused and do include your sub-agent/skill config files in your submission. A clean, complete implementation is better than an over-engineered incomplete one.
+
+They are asking for this in submission.
+
+PROMPT 39 — Prompts Log Request:
+----------------------------------
+One last thing, create a text file for all the prompts from the starting I have used to create this project. They want all the logs so that they confirm that this project is not copied. I have used 3-4 AI tools simultaneously — ChatGPT, Claude, Antigravity. I used ChatGPT to prompt Antigravity so that Antigravity can work more precisely and effectively. So add that all in the text file. If my prompts have some errors and if you think I should improve that, then do that also.
+
+
+=============================================
+NOTES ON AI TOOL USAGE
+=============================================
+
+HOW CHATGPT WAS USED:
+ChatGPT was used as a "prompt engineer" layer — I would describe what I needed in plain language and ask ChatGPT to help me write a precise, structured prompt that Antigravity could execute without ambiguity. This two-layer approach (ChatGPT → Antigravity) reduced back-and-forth and made each Antigravity session more focused.
+
+HOW CLAUDE WAS USED:
+Claude was used for spot-checking specific logic questions — for example, verifying whether a CSS sticky layout approach was correct, or whether a particular focus-trap implementation pattern was reliable across browsers.
+
+HOW ANTIGRAVITY WAS USED:
+Antigravity IDE was the primary execution agent. It had access to the file system, browser, and terminal. It generated all React JSX and CSS code, created components, ran commands, and inspected the running application in the browser. Every section of the project was implemented by Antigravity based on the structured prompts above.
+
+THE WORKFLOW IN PRACTICE:
+1. I reviewed the assignment PDF manually.
+2. I used ChatGPT to help me write high-quality system prompts and phase prompts.
+3. I sent those prompts to Antigravity IDE.
+4. Antigravity generated code and I reviewed it visually in the browser.
+5. I sent correction prompts (often directly, sometimes via ChatGPT) when something did not match.
+6. This loop continued until each section was visually and behaviorally correct.
+
+=============================================
+END OF PROMPTS LOG
+=============================================
+        

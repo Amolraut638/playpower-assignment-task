@@ -1,0 +1,280 @@
+/* ============================================
+   HEADER — Phases 3 & 4 (revised in fix pass)
+   ============================================ */
+
+/* ---------- Outer header ---------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hidden state — slides up off screen when sticky tab bar appears */
+.site-header--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Inner container: 3-column grid ---------- */
+.header-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 88px;
+}
+
+/* ==============================================
+   LEFT: LOGO
+   ============================================== */
+
+.airbnb-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  color: var(--rausch);
+  text-decoration: none;
+}
+
+/* ==============================================
+   CENTER: COMPACT SEARCH PILL
+   Matches reference: [icon] Anywhere | Anytime | Add guests [btn]
+   ============================================== */
+
+.search-pill {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 40px;
+  background: #fff;
+  box-shadow: var(--shadow-hover);
+  transition: box-shadow 0.2s ease;
+  height: 48px;
+  overflow: hidden;
+}
+
+.search-pill:hover {
+  box-shadow: var(--shadow-card);
+}
+
+/* Each clickable section inside the pill */
+.pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  border: none;
+  font-family: var(--font);
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 40px;
+  transition: background 0.15s ease;
+}
+
+.pill-btn:hover {
+  background: var(--grey200);
+}
+
+/* "Add guests" has lighter muted text */
+.pill-btn--guests {
+  font-weight: 400;
+  color: var(--muted2);
+  padding-right: 8px;
+}
+
+/* House icon inside first pill button */
+.pill-house-icon {
+  width: 38px;
+  height: 38px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* Vertical separator between sections */
+.pill-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.pill-divider--hidden {
+  opacity: 0;
+}
+
+/* Search icon button at the end */
+.pill-search-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--rausch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 7px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.pill-search-btn:hover {
+  background: #e0315a;
+}
+
+.pill-search-btn:active {
+  transform: scale(0.94);
+}
+
+/* ==============================================
+   RIGHT: USER MENU
+   ============================================== */
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.btn-text {
+  padding: 12px 16px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  font-family: var(--font);
+}
+
+.btn-text:hover {
+  background: var(--grey200);
+}
+
+.btn-icon-round {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  background: none;
+  border: none;
+  color: var(--ink);
+}
+
+.btn-icon-round:hover {
+  background: var(--grey200);
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 5px 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 21px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+  background: none;
+  font-family: var(--font);
+}
+
+.user-pill:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.user-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ==============================================
+   PHASE 4: INTERACTIVITY
+   ============================================== */
+
+.user-pill--open {
+  box-shadow: var(--shadow-hover);
+}
+
+.user-menu-wrapper {
+  position: relative;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  z-index: 300;
+  padding: 8px 0;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background 0.1s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--grey100);
+}
+
+.dropdown-item--bold {
+  font-weight: 600;
+}
+
+.dropdown-separator {
+  height: 1px;
+  background: var(--line);
+  margin: 8px 0;
+}

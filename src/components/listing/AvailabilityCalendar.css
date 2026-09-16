@@ -1,0 +1,269 @@
+/* ============================================
+   AVAILABILITY CALENDAR — Phase 14 (refined)
+   ============================================ */
+
+.cal-section {
+  padding: 32px 0 20px;
+}
+
+/* ── Heading ── */
+.cal-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.cal-date-range {
+  font-size: 14px;
+  color: var(--muted2);
+  margin: 0 0 28px;
+}
+
+.cal-date-range--error {
+  color: var(--rausch);
+  font-weight: 500;
+}
+
+/* ── Two-month grid ── */
+.cal-months {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+}
+
+/* ── Single month ── */
+.cal-month {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Month header */
+.cal-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cal-month-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  flex: 1;
+}
+
+.cal-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line-soft);
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  flex-shrink: 0;
+}
+
+.cal-nav-btn:hover {
+  background: var(--grey100);
+  border-color: var(--ink);
+}
+
+.cal-nav-btn:active {
+  transform: scale(0.94);
+}
+
+.cal-nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Day names row — single letters S M T W T F S */
+.cal-day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.cal-day-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted2);
+  text-align: center;
+  padding: 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Days grid */
+.cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 2px;
+}
+
+/* Single day cell — rendered as <button> for accessibility */
+.cal-cell {
+  position: relative;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Reset button defaults */
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: default;
+}
+
+.cal-cell--available {
+  cursor: pointer;
+}
+
+.cal-cell:focus-visible {
+  outline: 2px solid var(--rausch);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Range highlight strip via ::before */
+.cal-cell::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  background: transparent;
+  z-index: 0;
+}
+
+/* Number label */
+.cal-day-num {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--ink);
+  border-radius: 50%;
+  font-weight: 400;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* Hover */
+.cal-cell:not(.cal-cell--disabled):not(.cal-cell--empty):not(.cal-cell--unavailable):hover .cal-day-num {
+  background: var(--grey200);
+}
+
+/* Empty cells */
+.cal-cell--empty {
+  cursor: default;
+}
+
+/* Disabled / past */
+.cal-cell--disabled {
+  cursor: default;
+}
+.cal-cell--disabled .cal-day-num {
+  color: #d8d8d8;
+}
+
+/* Unavailable (host-blocked) — gray + diagonal dash */
+.cal-cell--unavailable {
+  cursor: not-allowed;
+}
+
+.cal-cell--unavailable .cal-day-num {
+  color: #d8d8d8;
+  position: relative;
+}
+
+/* Diagonal dash across the number */
+.cal-cell--unavailable .cal-day-num::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 1.5px;
+  background: #d8d8d8;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+/* In-range: soft rounded strip instead of hard rectangle */
+.cal-cell--in-range::before {
+  background: #f0f0f0;
+}
+
+/* Check-in: right half strip, rounded left edge */
+.cal-cell--start::before {
+  background: #f0f0f0;
+  left: 50%;
+  right: 0;
+  border-radius: 18px 0 0 18px;
+}
+
+/* Check-out: left half strip, rounded right edge */
+.cal-cell--end::before {
+  background: #f0f0f0;
+  left: 0;
+  right: 50%;
+  border-radius: 0 18px 18px 0;
+}
+
+/* Check-in / Check-out dark circles */
+.cal-cell--start .cal-day-num,
+.cal-cell--end .cal-day-num {
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.cal-cell--start:hover .cal-day-num,
+.cal-cell--end:hover .cal-day-num {
+  background: #3d3d3d;
+}
+
+/* ── Footer row ── */
+.cal-footer {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cal-keyboard-icon {
+  color: var(--muted2);
+  opacity: 1;
+}
+
+.cal-clear-btn {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.cal-clear-btn:hover {
+  opacity: 0.6;
+}

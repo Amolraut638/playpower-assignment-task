@@ -1,0 +1,169 @@
+/* ============================================
+   STICKY SCROLL HEADER — Phase 5 (refined)
+   ============================================ */
+
+.sticky-scroll-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 201;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.32s ease;
+}
+
+.sticky-scroll-header--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.sticky-scroll-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left nav wrapper */
+.sticky-scroll-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+}
+
+/* Individual tab link */
+.sticky-tab {
+  position: relative;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted2);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: color 0.15s ease, background 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.sticky-tab:hover {
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sticky-tab--active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sticky-tab--active:hover {
+  background: none;
+}
+
+/* Active tab underline — anchored to the bar's bottom edge, not the tab's own padding */
+.sticky-tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Right: pricing + Reserve */
+.sticky-scroll-reserve {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sticky-reserve-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.sticky-price {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.sticky-price-amount {
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.sticky-price-nights {
+  font-weight: 400;
+  color: var(--muted2);
+}
+
+.sticky-rating {
+  font-size: 13px;
+  color: var(--muted2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sticky-star {
+  color: var(--ink);
+  font-size: 11px;
+}
+
+/* Reserve button — pill shaped */
+.sticky-reserve-btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: var(--reserve);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.sticky-reserve-btn:hover {
+  background: var(--reserve-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.sticky-reserve-btn:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.sticky-reserve-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

@@ -1,0 +1,68 @@
+/* ============================================
+   HOST CARD — Phase 8
+   Extracted from GuestFavoriteBadge.css
+   ============================================ */
+
+.host-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* Avatar wrapper */
+.host-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #3d8b6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font);
+}
+
+.host-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hide initials when image loads */
+.host-avatar-wrap .host-initials {
+  display: none;
+}
+
+.host-avatar-wrap.avatar-error .host-avatar {
+  display: none;
+}
+
+.host-avatar-wrap.avatar-error .host-initials {
+  display: block;
+}
+
+.host-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.host-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.host-meta {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.4;
+}

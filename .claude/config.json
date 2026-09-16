@@ -1,0 +1,12 @@
+{
+  "role": "secondary-reasoning",
+  "usage": "spot-checking logic, accessibility patterns, CSS layout verification",
+  "primary_agent": "Antigravity IDE",
+  "prompt_engineer": "ChatGPT",
+  "tasks": [
+    "Focus trap implementation review",
+    "Accessibility aria pattern verification",
+    "CSS sticky layout logic cross-check",
+    "React portal rendering edge cases"
+  ]
+}

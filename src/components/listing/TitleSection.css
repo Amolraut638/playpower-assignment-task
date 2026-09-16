@@ -1,0 +1,58 @@
+/* ============================================
+   TITLE SECTION — Phase 6
+   ============================================ */
+
+.title-section {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 30px 80px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.title-text {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.title-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  transition: background 0.15s ease;
+  background: none;
+  border: none;
+  font-family: var(--font);
+}
+
+.action-btn:hover {
+  background: var(--grey200);
+}
+
+.action-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.action-text {
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+}

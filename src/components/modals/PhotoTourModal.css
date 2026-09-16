@@ -1,0 +1,193 @@
+/* ============================================
+   PHOTO TOUR MODAL (Redesigned) — Phase 21
+   ============================================ */
+
+/* Portal overlay */
+.photo-tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Top bar ── */
+.photo-tour-topbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--line-soft);
+  flex-shrink: 0;
+}
+
+.photo-tour-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.photo-tour-back-btn:hover { background: var(--grey100); }
+
+.photo-tour-topbar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+
+.photo-tour-topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.photo-tour-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.photo-tour-action-btn:hover { background: var(--grey100); }
+
+/* ── Scrollable content area ── */
+.photo-tour-content {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* ── Top thumbnail category grid ── */
+.photo-tour-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 24px 80px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.photo-tour-thumb-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  padding: 0;
+}
+
+.photo-tour-thumb-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-tour-thumb-label {
+  font-size: 11px;
+  color: var(--ink);
+  text-align: center;
+  max-width: 84px;
+  line-height: 1.3;
+}
+
+/* ── Room section — 2-column ── */
+.photo-tour-section {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 64px;
+  padding: 48px 80px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: start;
+}
+.photo-tour-section:last-child { border-bottom: none; }
+
+/* Sticky left title column */
+.photo-tour-section-left {
+  position: sticky;
+  top: 0;  /* sticks at the top of the scroll container */
+  align-self: start;
+}
+
+.photo-tour-section-left h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.photo-tour-amenities {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Right photo column */
+.photo-tour-section-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Hero / first full-width photo */
+.photo-tour-hero-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.photo-tour-hero-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.photo-tour-hero-wrap:hover .photo-tour-hero-img { transform: scale(1.02); }
+
+/* 2-column subgrid for remaining photos */
+.photo-tour-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.photo-tour-subgrid-item {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+  aspect-ratio: 4/3;
+}
+
+.photo-tour-subgrid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.photo-tour-subgrid-item:hover .photo-tour-subgrid-img { transform: scale(1.02); }

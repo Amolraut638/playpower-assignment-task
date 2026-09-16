@@ -1,0 +1,182 @@
+/* ============================================
+   GUEST FAVORITE BADGE — Phase 9
+   ============================================ */
+
+.guest-favorite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+/* ============================================
+   LEFT: Laurels + Title
+   ============================================ */
+
+.gf-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* PNG Laurel Images */
+.gf-laurel-image {
+  width: 30px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.gf-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* ============================================
+   CENTER: Description
+   ============================================ */
+
+.gf-description {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ============================================
+   RIGHT: Rating
+   ============================================ */
+
+.gf-metrics {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.gf-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.gf-score {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.gf-stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  color: var(--ink);
+}
+
+.gf-star {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.gf-count {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.gf-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.gf-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HOST CARD — Phase 8
+   ============================================ */
+
+.host-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* Avatar wrapper */
+.host-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #3d8b6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font);
+}
+
+.host-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hide initials when image loads */
+.host-avatar-wrap .host-initials {
+  display: none;
+}
+
+.host-avatar-wrap.avatar-error .host-avatar {
+  display: none;
+}
+
+.host-avatar-wrap.avatar-error .host-initials {
+  display: block;
+}
+
+.host-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.host-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.host-meta {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.4;
+}

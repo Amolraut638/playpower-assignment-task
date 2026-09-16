@@ -1,0 +1,105 @@
+/* ============================================
+   SLEEPING ARRANGEMENTS — Phase 12 (Premium)
+   ============================================ */
+
+.sleeping {
+  padding: 40px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.sleeping-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: 0 0 24px;
+}
+
+/* ── Horizontally-scrollable card strip ── */
+.sleeping-cards {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+  /* Negative margin trick — lets cards touch the scroll edge */
+  margin-left: 0;
+  margin-right: 0;
+}
+.sleeping-cards::-webkit-scrollbar { display: none; }
+
+/* ── Individual room card ── */
+.sleep-card {
+  width: 296px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.sleep-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Image box — border lives here, not on the card ── */
+.sleep-card-img-wrap {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  transition: box-shadow 0.25s ease;
+}
+
+.sleep-card:hover .sleep-card-img-wrap {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+}
+
+.sleep-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ── Card text area — sits BELOW the image box ── */
+.sleep-card-body {
+  padding: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sleep-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+/* Bed type row with inline icon */
+.sleep-card-bed {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted2);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* SVG bed icon injected via ::before (lightweight, no import) */
+.sleep-card-bed::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background-color: var(--muted2);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M26 14H12v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v10h2v-4h24v4h2V19a5 5 0 0 0-5-5zM6 12h2a2 2 0 0 1 2 2v2H4v-2a2 2 0 0 1 2-2zm20 8H4v-2h22.2A3 3 0 0 1 29 20v.06A3 3 0 0 0 26 20z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M26 14H12v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v10h2v-4h24v4h2V19a5 5 0 0 0-5-5zM6 12h2a2 2 0 0 1 2 2v2H4v-2a2 2 0 0 1 2-2zm20 8H4v-2h22.2A3 3 0 0 1 29 20v.06A3 3 0 0 0 26 20z'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

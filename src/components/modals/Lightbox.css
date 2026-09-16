@@ -1,0 +1,171 @@
+/* ============================================
+   LIGHTBOX CAROUSEL MODAL — Phase 22
+   ============================================ */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar with counter + close */
+.lightbox-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.lightbox-counter {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.lightbox-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightbox-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.lightbox-action-btn:hover { background: var(--grey100); }
+
+.lightbox-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  color: var(--ink);
+}
+.lightbox-close-btn:hover { background: var(--grey100); }
+
+/* Main image area */
+.lightbox-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 80px;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-img {
+    transition: none;
+  }
+}
+
+.lightbox-img--fading { opacity: 0; }
+
+/* Prev / Next buttons */
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: var(--ink);
+  z-index: 2;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.lightbox-nav-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.lightbox-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.lightbox-nav-btn--prev { left: 16px; }
+.lightbox-nav-btn--next { right: 16px; }
+
+/* Thumbnail strip (optional bottom row) */
+.lightbox-thumbnails {
+  display: flex;
+  gap: 6px;
+  padding: 12px 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.lightbox-thumbnails::-webkit-scrollbar { display: none; }
+
+/* Thumbnail button wrapper — keyboard-accessible, visually identical to previous <img> */
+.lightbox-thumb-btn {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+.lightbox-thumb-btn--active {
+  opacity: 1;
+  border-color: var(--ink);
+}
+.lightbox-thumb-btn:hover { opacity: 0.9; }
+.lightbox-thumb-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.lightbox-thumb {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+

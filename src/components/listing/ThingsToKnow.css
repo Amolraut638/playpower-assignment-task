@@ -1,0 +1,156 @@
+/* ============================================
+   THINGS TO KNOW — Phase 21 (redesign)
+   3-column: Cancellation | House rules | Safety
+   ============================================ */
+
+.things-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.things-section > h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+/* 3-column grid — equal widths */
+.things-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+/* Each column */
+.things-col {
+  position: relative;
+  padding: 4px 40px 4px 0;
+  border-right: 1px solid var(--line-soft);
+  transition: transform 0.2s ease;
+}
+.things-col:first-child { padding-left: 0; }
+.things-col:nth-child(2) { padding-left: 40px; }
+.things-col:last-child {
+  padding-left: 40px;
+  padding-right: 0;
+  border-right: none;
+}
+
+/* Icon badge — the interactive centrepiece */
+.things-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--grey100);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.things-col:hover .things-icon-wrap {
+  background: var(--ink);
+  color: #fff;
+  transform: scale(1.06) rotate(-4deg);
+}
+
+.things-col h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+/* List of items */
+.things-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.things-text {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.things-text--link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--ink);
+  transition: opacity 0.15s ease;
+}
+.things-text--link:hover { opacity: 0.65; }
+
+/* Learn more */
+.things-show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  padding: 0;
+  margin-top: 2px;
+  transition: opacity 0.15s ease;
+}
+.things-show-more:hover { opacity: 0.7; }
+
+.things-show-more-icon {
+  transition: transform 0.2s ease;
+  transform: translateX(0);
+}
+.things-show-more:hover .things-show-more-icon {
+  transform: translateX(3px);
+}
+
+.things-show-more:focus-visible,
+.things-text--link:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .things-col,
+  .things-icon-wrap,
+  .things-show-more-icon {
+    transition: none;
+  }
+  .things-col:hover .things-icon-wrap {
+    transform: none;
+  }
+}
+
+/* Stack on smaller screens */
+@media (max-width: 800px) {
+  .things-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .things-col,
+  .things-col:first-child,
+  .things-col:nth-child(2),
+  .things-col:last-child {
+    padding: 0 0 24px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .things-col:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,10 @@
+/* App-level layout helpers */
+
+/* Full-width sections below the two-column ContentLayout.
+   Uses same container width + horizontal padding as ContentLayout. */
+.listing-fullwidth {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 80px;
+}
+

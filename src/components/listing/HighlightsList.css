@@ -1,0 +1,48 @@
+/* ============================================
+   HIGHLIGHTS LIST — Phase 10
+   ============================================ */
+
+.highlights {
+  border-top: 1px solid var(--line-soft);
+  padding: 32px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Single highlight row */
+.highlight-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Icon wrapper — fixed 24×24 */
+.highlight-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--ink);
+  margin-top: 2px;
+}
+
+/* Text block */
+.highlight-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlight-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.highlight-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted2);
+  line-height: 1.45;
+}

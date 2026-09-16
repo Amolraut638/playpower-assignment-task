@@ -1,0 +1,351 @@
+/* ============================================
+   BOOKING WIDGET — Phase 15 (refined)
+   ============================================ */
+
+.booking-outer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Discount banner — SEPARATE card above main card ── */
+.booking-discount-card {
+  border: 1px solid rgba(61, 139, 74, 0.25);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(to bottom, rgba(61, 139, 74, 0.05), rgba(61, 139, 74, 0.02));
+}
+
+.booking-discount-icon {
+  flex-shrink: 0;
+  color: #3d8b4a;
+  display: flex;
+}
+
+.booking-discount-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.booking-discount-line1 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted2);
+  line-height: 1.4;
+}
+
+.booking-discount-line2 a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.booking-discount-line2 a:hover {
+  color: var(--ink);
+}
+
+.booking-claim-btn {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border: 1.5px solid #3d8b4a;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3d8b4a;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.booking-claim-btn:hover {
+  background: #3d8b4a;
+  color: #fff;
+}
+
+.booking-claim-btn:active {
+  transform: scale(0.96);
+}
+
+/* ── Main booking card ── */
+.booking-card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Price row ── */
+.booking-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.booking-price {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: -0.01em;
+}
+
+.booking-price-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted2);
+}
+
+.booking-price-sub--prompt {
+  font-size: 14px;
+  color: var(--muted2);
+}
+
+/* ── Dates / guests bordered box ── */
+.booking-dates-box {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.booking-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.booking-date-cell {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.booking-date-cell:hover {
+  background: var(--grey100);
+}
+
+.booking-date-cell:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.booking-cell-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.booking-cell-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.booking-guests-row {
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.booking-guests-row:hover {
+  background: var(--grey100);
+}
+
+.booking-guests-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Cancellation notice — gray background box ── */
+.booking-cancellation {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  text-align: center;
+  background: var(--grey100);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.booking-cancellation strong {
+  font-weight: 600;
+}
+
+/* ── Reserve button — full pill shape ── */
+.booking-reserve-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--reserve);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.booking-reserve-btn:hover {
+  background: var(--reserve-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.booking-reserve-btn:active {
+  transform: scale(0.98) translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+}
+
+.booking-reserve-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ── Disclaimer ── */
+.booking-disclaimer {
+  font-size: 13px;
+  color: var(--muted2);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Report this listing (below both cards) ── */
+.booking-report {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.booking-report:hover {
+  color: var(--ink);
+}
+
+/* ── Price Breakdown — Phase 16 ── */
+.booking-breakdown {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.breakdown-label {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.breakdown-label--link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.breakdown-label--link:hover {
+  color: var(--muted2);
+}
+
+.breakdown-value {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.breakdown-value--discount {
+  color: #3d8b4a;
+  font-weight: 500;
+}
+
+/* Total row */
+.breakdown-row--total {
+  border-top: 1px solid var(--ink);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.breakdown-row--total .breakdown-label,
+.breakdown-row--total .breakdown-value {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ── Guest counter controls ── */
+.booking-guest-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guest-ctrl-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line, #ddd);
+  background: transparent;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.guest-ctrl-btn:hover:not(:disabled) {
+  border-color: var(--ink, #222);
+}
+
+.guest-ctrl-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

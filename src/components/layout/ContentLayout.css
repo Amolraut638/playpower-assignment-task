@@ -1,0 +1,26 @@
+/* ============================================
+   CONTENT LAYOUT — Phase 7
+   Two-column grid: fluid left + 372px fixed right
+   ============================================ */
+
+.content-layout {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 372px;
+  gap: 0 96px;
+  align-items: start;
+}
+
+/* Left column — fluid, prevents content overflow */
+.content-left {
+  min-width: 0;
+}
+
+/* Right column — sticky booking card */
+.content-right {
+  position: sticky;
+  top: 108px; /* 88px main header + 20px breathing room */
+  align-self: start;
+}
